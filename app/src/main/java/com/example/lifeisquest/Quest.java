@@ -1,5 +1,7 @@
 package com.example.lifeisquest;
 
+import java.util.ArrayList;
+
 public class Quest {
     String ID_GIVER; // 퀘스트 주는 사람 ID
     String ID_RECIVER; // 퀘스트 받는 사람 ID
