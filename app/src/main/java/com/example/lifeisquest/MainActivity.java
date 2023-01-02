@@ -12,5 +12,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //김무겸
         ///ㅇㄹㄴㄹㅇㄹㄴㅇㅇㄴㄹㄴ란라ㅏㄴ아
+        //박상필
+        //ㅇㅈㅇ우정저ㅠ유ㅓ유어
     }
 }
