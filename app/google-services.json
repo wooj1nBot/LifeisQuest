@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1092124747764",
+    "project_id": "life2quest",
+    "storage_bucket": "life2quest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092124747764:android:bc3030c94cbdac1dfebba1",
+        "android_client_info": {
+          "package_name": "com.example.lifeisquest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1092124747764-4pbkii5lipuivh7sflj3p3jnhpec7959.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lifeisquest",
+            "certificate_hash": "4af5e59a4e20aab51d099471642f934c8b29c9bf"
+          }
+        },
+        {
+          "client_id": "1092124747764-qaum2npg6mil0ghsnekmnrfruh9s864q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZt0_Vj0UHChq8hXgDnrPcXEJNtj6yGY8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1092124747764-qaum2npg6mil0ghsnekmnrfruh9s864q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
