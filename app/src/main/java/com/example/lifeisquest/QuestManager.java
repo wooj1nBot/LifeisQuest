@@ -44,13 +44,13 @@ public class QuestManager {
                 int a=Documents.size(); // document 갯수만큼 a가져오기
                 for(int i=0;i<a;i++){
                     Quest quest=new Quest();
-                    quest.setID_RECIVER((String) Documents.get(i).get("ID_RECIVER"));
+                    quest.setID_RECEIVER((String) Documents.get(i).get("ID_RECIVER"));
                     quest.setID_GIVER((String) Documents.get(i).get("ID_GIVER"));
                     quest.setMESSAGE((String) Documents.get(i).get("MESSAGE"));
                     quest.setQUEST_TITLE((String) Documents.get(i).get("QUEST_TABLE"));
                     quest.setQUEST_DIFFICULTY(Integer.parseInt((String) Documents.get(i).get("QUEST_DIFFICULTY")));
                     quest.setQUEST_RECEIVED_TIME(Integer.parseInt((String) Documents.get(i).get("QUEST_RECIVED_TIME")));
-                    quest.setQUEST_SPENTED_TIME(Integer.parseInt((String) Documents.get(i).get("QUEST_SPENTED_TIME")));
+                    quest.setQUEST_SEND_TIME(Integer.parseInt((String) Documents.get(i).get("QUEST_SPENTED_TIME")));
                     quest.setQUEST_SUCCESS(Boolean.valueOf((String) Documents.get(i).get("QUEST_SUCCESS")));
                     quest.setQUEST_ACCEPT(Boolean.valueOf((String) Documents.get(i).get("QUEST_ACCEPT")));
                     quest_array.add(quest);
