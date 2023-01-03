@@ -14,14 +14,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="57dp">
+
         <Button
-            android:layout_width="50dp"
             android:id="@+id/backBtn"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text="@string/back"
-            android:textSize="30sp"
-            />
+            android:textSize="30sp" />
+
         <TextView
 
             android:id="@+id/sign_up_textview"
@@ -49,9 +50,8 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:textSize="25dp"
                 android:background="@drawable/memo_border"
-                />
+                android:textSize="25dp" />
 
 
         </LinearLayout>
@@ -74,8 +74,8 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:textSize="25dp"
-                android:background="@drawable/memo_border"/>
+                android:background="@drawable/memo_border"
+                android:textSize="25dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -96,10 +96,9 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:textSize="25dp"
-                android:background="@drawable/memo_border"/>
+                android:background="@drawable/memo_border"
+                android:textSize="25dp" />
         </LinearLayout>
-
 
 
         <LinearLayout
@@ -119,9 +118,9 @@
             <EditText
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/memo_border"
-                android:layout_marginLeft="20dp" />
+                android:textSize="25dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -142,8 +141,8 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:textSize="25dp"
-                android:background="@drawable/memo_border"/>
+                android:background="@drawable/memo_border"
+                android:textSize="25dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -165,8 +164,8 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:textSize="25dp"
-                android:background="@drawable/memo_border"/>
+                android:background="@drawable/memo_border"
+                android:textSize="25dp" />
         </LinearLayout>
 
 
@@ -174,12 +173,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name_layout">
+
             <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-                android:text="가입하기"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
-                android:background="@drawable/round_square">
+                android:background="@drawable/round_square"
+                android:text="가입하기">
 
             </Button>
         </LinearLayout>

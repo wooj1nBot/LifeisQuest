@@ -34,7 +34,14 @@ public class LoginActivity2 extends AppCompatActivity {
         });
 
         // forgot pw
-
+        binding.forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ForgotPW.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         // login
         binding.emailEdit.setOnClickListener(new View.OnClickListener() {
