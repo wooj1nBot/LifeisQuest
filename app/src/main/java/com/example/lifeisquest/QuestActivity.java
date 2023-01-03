@@ -26,6 +26,7 @@ public class QuestActivity extends AppCompatActivity {
     private Button setDeadLineBtn, sendQuestBtn;
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +44,12 @@ public class QuestActivity extends AppCompatActivity {
         //핸들러로 deadline Text 조정
         new Thread(new Runnable() {
             Handler handler = new Handler();
+
             @Override
             public void run() {
                 handler.post(new Runnable() {
                     Calendar c = Calendar.getInstance();
+
                     @Override
                     public void run() {
                         deadLineText.setText(getDate(c));
@@ -69,8 +72,8 @@ public class QuestActivity extends AppCompatActivity {
 
                         @Override
                         public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                            month = month+1;
-                            String date = year+"/"+month+"/"+day;
+                            month = month + 1;
+                            String date = year + "/" + month + "/" + day;
                             objCalendar.set(year, day, month);
                             sb.append(date);
                         }
@@ -80,7 +83,7 @@ public class QuestActivity extends AppCompatActivity {
             timePickerDialog = new TimePickerDialog(QuestActivity.this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                    String time = "("+hour+":"+minute+")";
+                    String time = "(" + hour + ":" + minute + ")";
                     objCalendar.set(Calendar.HOUR, hour);
                     objCalendar.set(Calendar.MINUTE, minute);
                     sb.append(time);
@@ -92,7 +95,8 @@ public class QuestActivity extends AppCompatActivity {
 
 
     }
-    static String getDate(Calendar c){
+
+    static String getDate(Calendar c) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd(HH:mm)");
         String strToday = sdf.format(c.getTime());
         return strToday;

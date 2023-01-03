@@ -15,6 +15,9 @@ import android.widget.Toast;
 import com.example.lifeisquest.databinding.ActivityLogin2Binding;
 import com.example.lifeisquest.databinding.ActivityMainBinding;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class LoginActivity2 extends AppCompatActivity {
     private ActivityLogin2Binding binding;
 
@@ -44,20 +47,27 @@ public class LoginActivity2 extends AppCompatActivity {
         });
 
         // login
-        binding.emailEdit.setOnClickListener(new View.OnClickListener() {
+        binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!isEmail(binding.emailEdit.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "올바른 이메일 형식이 아닙니다.\n다시 입력해주세요", Toast.LENGTH_LONG).show();
+                }else {
 
+                }
             }
         });
 
-        binding.password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
-
-
+    }
+    public static boolean isEmail(String email){
+        boolean returnValue = false;
+        String regex = "^[_a-zA-Z0-9-\\.]+@[\\.a-zA-Z0-9-]+\\.[a-zA-Z]+$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(email);
+        if(m.matches()){
+            returnValue = true;
+        }
+        return returnValue;
     }
 }
