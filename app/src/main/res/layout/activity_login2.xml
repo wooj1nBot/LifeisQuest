@@ -12,9 +12,7 @@
         android:background="#8891C0D5"
         android:gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/app_name"
@@ -26,9 +24,18 @@
             android:textColor="@color/black"
             android:textSize="36sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-mail"
+            android:layout_alignTop="@+id/email_edit"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            />
+
         <EditText
             android:id="@+id/email_edit"
-            android:layout_width="300sp"
+            android:layout_width="250sp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/app_name"
             android:layout_centerHorizontal="true"
@@ -36,20 +43,28 @@
             android:clickable="true"
             android:focusable="true"
             android:maxLines="1"
-            android:text="E-mail"
+            android:background="@drawable/memo_border"
             android:textColor="@color/black"
             android:textSize="18sp" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PW"
+            android:layout_alignTop="@+id/password"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            />
         <EditText
             android:id="@+id/password"
-            android:layout_width="300sp"
+            android:layout_width="250sp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/email_edit"
             android:layout_centerHorizontal="true"
             android:maxLines="1"
-            android:text="@string/Password"
+            android:background="@drawable/memo_border"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginTop="10sp"/>
 
         <Button
             android:id="@+id/login_btn"
