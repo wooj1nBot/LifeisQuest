@@ -17,6 +17,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUpActivity2 extends AppCompatActivity {
     ActivitySignUp2Binding binding;
@@ -61,19 +63,34 @@ public class SignUpActivity2 extends AppCompatActivity {
                 user.put("nickname", nickname);
                 user.put("email", email);
                 user.put("name", name);
-
-                db = FirebaseFirestore.getInstance();
-                db.collection("User")
-                        .document(id)
-                        .set(user)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(getApplicationContext(), "suc", Toast.LENGTH_LONG).show();
-                                finish();
-                            }
-                        });
+                if (!pw1.equals(pw2)) {
+                    Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다.\n비밀번호를 다시 입력해주세요", Toast.LENGTH_LONG).show();
+                } else if (!isEmail(email)) {
+                    Toast.makeText(getApplicationContext(), "이메일 형식이 다릅니다.\n다시 입력해주세요", Toast.LENGTH_LONG).show();
+                }else {
+                    db = FirebaseFirestore.getInstance();
+                    db.collection("User")
+                            .document(id)
+                            .set(user)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(getApplicationContext(), "suc", Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
+                            });
+                }
             }
         });
+    }
+    public static boolean isEmail(String email){
+        boolean returnValue = false;
+        String regex = "^[_a-zA-Z0-9-\\.]+@[\\.a-zA-Z0-9-]+\\.[a-zA-Z]+$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(email);
+        if(m.matches()){
+            returnValue = true;
+        }
+        return returnValue;
     }
 }
