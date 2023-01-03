@@ -3,16 +3,16 @@ package com.example.lifeisquest;
 import java.util.ArrayList;
 
 public class Quest {
-    String ID_GIVER; // 퀘스트 주는 사람 ID
-    String ID_RECEIVER; // 퀘스트 받는 사람 ID
-    String MESSAGE; // 퀘스트 요청내용
-    String QUEST_TITLE; // 퀘스트 제목
-    Boolean QUEST_ACCEPT; // 퀘스트 수락 여부
-    Boolean QUEST_SUCCESS; // 퀘스트 성공 여부
-    int QUEST_DIFFICULTY; // 퀘스트 난이도
-    int QUEST_SEND_TIME; // 퀘스트 보낸 시간
-    int QUEST_RECEIVED_TIME; // 퀘스트 받은 시간
-    double[] QUEST_LOCATION;
+    private String ID_GIVER; // 퀘스트 주는 사람 ID
+    private String ID_RECEIVER; // 퀘스트 받는 사람 ID
+    private String MESSAGE; // 퀘스트 요청내용
+    private String QUEST_TITLE; // 퀘스트 제목
+    private Boolean QUEST_ACCEPT; // 퀘스트 수락 여부
+    private Boolean QUEST_SUCCESS; // 퀘스트 성공 여부
+    private int QUEST_DIFFICULTY; // 퀘스트 난이도
+    private int QUEST_SEND_TIME; // 퀘스트 보낸 시간
+    private int QUEST_RECEIVED_TIME; // 퀘스트 받은 시간
+    private double[] QUEST_LOCATION;
     // 좌표 파일 형식 받아서 겟셋 하고 해야함 ㅇㅇ
     public Quest(){}
     public Quest(String ID_GIVER,String ID_RECIVER,String MESSAGE,String QUEST_TITLE,
