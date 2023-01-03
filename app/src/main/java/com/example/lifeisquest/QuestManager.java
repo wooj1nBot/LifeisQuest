@@ -4,8 +4,10 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -16,7 +18,9 @@ import java.util.List;
 
 public class QuestManager {
     private FirebaseFirestore db;
-    private FirebaseUser User;
+    private FirebaseUser firebaseUser;
+    private int cnt = 0;
+
     public void quest_reigist(Quest q){
        db.collection("Quest").document().set(q).addOnSuccessListener(new OnSuccessListener<Void>() {
            @Override
@@ -35,28 +39,28 @@ public class QuestManager {
         return true;
         // 나중에 퀘스트 빼먹은거 확인용 메서드
     }
-    public ArrayList<Quest> quest_reader(){
+    public void quest_Reader(ArrayList<String> quests){ //퀘스트 id를 받으면 퀘스트 세부정보를 받는것으로 수정
         ArrayList<Quest> quest_array=new ArrayList<>();
-        db.collection("Quest").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                List<DocumentSnapshot> Documents=queryDocumentSnapshots.getDocuments();
-                int a=Documents.size(); // document 갯수만큼 a가져오기
-                for(int i=0;i<a;i++){
-                    Quest quest=new Quest();
-                    quest.setID_RECEIVER((String) Documents.get(i).get("ID_RECIVER"));
-                    quest.setID_GIVER((String) Documents.get(i).get("ID_GIVER"));
-                    quest.setMESSAGE((String) Documents.get(i).get("MESSAGE"));
-                    quest.setQUEST_TITLE((String) Documents.get(i).get("QUEST_TABLE"));
-                    quest.setQUEST_DIFFICULTY(Integer.parseInt((String) Documents.get(i).get("QUEST_DIFFICULTY")));
-                    quest.setQUEST_RECEIVED_TIME(Integer.parseInt((String) Documents.get(i).get("QUEST_RECIVED_TIME")));
-                    quest.setQUEST_SEND_TIME(Integer.parseInt((String) Documents.get(i).get("QUEST_SPENTED_TIME")));
-                    quest.setQUEST_SUCCESS(Boolean.valueOf((String) Documents.get(i).get("QUEST_SUCCESS")));
-                    quest.setQUEST_ACCEPT(Boolean.valueOf((String) Documents.get(i).get("QUEST_ACCEPT")));
-                    quest_array.add(quest);
+        cnt = 0;
+
+        for (String id : quests){
+            db.collection("Quest").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    cnt++;
+                    if(task.isSuccessful()){
+                        Quest quest = task.getResult().toObject(Quest.class);
+                        quest_array.add(quest);
+                    }else {
+                        //실패
+                    }
+                    if(cnt == quests.size()){
+                        //작업이 모두 완료
+                    }
                 }
-            }
-        });
-        return quest_array;
+            });
+        }
+
+        //리스너 형태라 바로 리턴값을 돌려주진 않음(리턴 보이드로 하고 모든 퀘스트에 대해서 작업이 완료될때 다음 작업으로 넘어가야함)
     }
 }

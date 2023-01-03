@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/page_home"
+        android:icon="@drawable/home_48px"
+        android:enabled="true"
+        android:checked="true"
+        android:title="홈" />
+    <item
+        android:id="@+id/page_friend"
+        android:icon="@drawable/group_48px"
+        android:enabled="true"
+        android:title="친구" />
+    <item
+        android:id="@+id/page_add_quest"
+        android:icon="@drawable/add_circle_48px"
+        android:enabled="true"
+        android:title="d" />
+    <item
+        android:id="@+id/page_quest"
+        android:icon="@drawable/fact_check_48px"
+        android:enabled="true"
+        android:title="퀘스트" />
+    <item
+        android:id="@+id/page_mypage"
+        android:icon="@drawable/account_circle_48px"
+        android:enabled="true"
+        android:title="마이페이지" />
+</menu>
