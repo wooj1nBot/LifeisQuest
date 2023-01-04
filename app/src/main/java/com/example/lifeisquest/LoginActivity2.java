@@ -1,5 +1,6 @@
 package com.example.lifeisquest;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -14,12 +15,17 @@ import android.widget.Toast;
 
 import com.example.lifeisquest.databinding.ActivityLogin2Binding;
 import com.example.lifeisquest.databinding.ActivityMainBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginActivity2 extends AppCompatActivity {
     private ActivityLogin2Binding binding;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,7 @@ public class LoginActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity2.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -50,10 +57,27 @@ public class LoginActivity2 extends AppCompatActivity {
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isEmail(binding.emailEdit.getText().toString())) {
-                    Toast.makeText(getApplicationContext(), "올바른 이메일 형식이 아닙니다.\n다시 입력해주세요", Toast.LENGTH_LONG).show();
+                String email = binding.emailEdit.getText().toString();
+                String pw = binding.password.getText().toString();
+                if (email.isEmpty() || pw.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "입력 사항을 확인해보세요", Toast.LENGTH_SHORT).show();
+                }else if (!isEmail(email)) {
+                    Toast.makeText(getApplicationContext(), "올바른 이메일 형식이 아닙니다.\n다시 입력해주세요", Toast.LENGTH_SHORT).show();
                 }else {
-
+                    // 로그인이 성공하는 조건 분기
+                    mAuth = FirebaseAuth.getInstance();
+                    mAuth.signInWithEmailAndPassword(email, pw)
+                            .addOnCompleteListener(LoginActivity2.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                        finish();
+                                    }else{
+                                        Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                 }
             }
         });
