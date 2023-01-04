@@ -51,30 +51,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="아이디 입력"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/memo_border"
-                    android:textSize="25dp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/email_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/sign_up_textview"
-                android:layout_marginTop="20sp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="이메일 입력"
                     android:textSize="20dp" />
 
@@ -84,15 +60,20 @@
                     android:layout_marginLeft="20dp"
                     android:background="@drawable/memo_border"
                     android:textSize="25dp" />
+
+
             </LinearLayout>
+
         </LinearLayout>
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
             android:layout_marginLeft="20sp"
-            android:textSize="18sp"
-            android:text="아이디 찾기"/>
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:background="@drawable/round_square"
+            android:text="  인증 메일 보내기  "/>
     </LinearLayout>
 
 </RelativeLayout>

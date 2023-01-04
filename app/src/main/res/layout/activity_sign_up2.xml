@@ -55,7 +55,6 @@
                 android:background="@drawable/memo_border"
                 android:textSize="25dp" />
 
-
         </LinearLayout>
 
         <LinearLayout
@@ -79,6 +78,7 @@
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/memo_border"
                 android:textSize="25dp" />
+
         </LinearLayout>
 
         <LinearLayout

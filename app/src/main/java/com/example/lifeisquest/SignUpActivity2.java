@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -39,6 +40,7 @@ public class SignUpActivity2 extends AppCompatActivity {
     String email;
     String name;
     FirebaseAuth mAuth; // 계정 등록을 위한 FireBase 객체
+    FirebaseUser User;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
