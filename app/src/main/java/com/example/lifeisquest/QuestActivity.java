@@ -65,6 +65,7 @@ public class QuestActivity extends AppCompatActivity {
             int pMonth = calendar.get(Calendar.MONTH);
             int pDay = calendar.get(Calendar.DAY_OF_MONTH);
             StringBuilder sb = new StringBuilder();
+
             Calendar objCalendar = Calendar.getInstance();
 
             datePickerDialog = new DatePickerDialog(QuestActivity.this,
@@ -95,6 +96,8 @@ public class QuestActivity extends AppCompatActivity {
 
 
     }
+
+
 
     static String getDate(Calendar c) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd(HH:mm)");
