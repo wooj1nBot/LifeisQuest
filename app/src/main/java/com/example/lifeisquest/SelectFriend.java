@@ -26,10 +26,8 @@ public class SelectFriend extends AppCompatActivity {
 
         FriendSelectAdapter mMyAdapter = new FriendSelectAdapter();
 
+        mMyAdapter.addItem(friendlist);//임시로 동그라미 넣음
 
-        for (int i=0; i<10; i++) {
-            mMyAdapter.addItem(friendlist);//임시로 동그라미 넣음
-        }
 
         /* 리스트뷰에 어댑터 등록 */
         mListView.setAdapter(mMyAdapter);

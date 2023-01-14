@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -23,7 +24,7 @@ public class QuestActivity extends AppCompatActivity {
     private Quest quest;
     private RatingBar ratingDiff;
     private TextView rewardText, informText, deadLineText;
-    private Button setDeadLineBtn, sendQuestBtn;
+    private ImageButton setDeadLineBtn, sendQuestBtn;
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
 
@@ -31,14 +32,14 @@ public class QuestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quest);
+        setContentView(R.layout.make_quest);
 
         //view 지정코드
         ratingDiff = findViewById(R.id.ratingdifficulty);
         rewardText = findViewById(R.id.rewardQuest);
         informText = findViewById(R.id.informQuest);
         deadLineText = findViewById(R.id.deadLineText);
-        setDeadLineBtn = findViewById(R.id.setDeadLineBtn);
+        setDeadLineBtn = findViewById(R.id.setDeadlineBtn);
         sendQuestBtn = findViewById(R.id.sendQuestBtn);
 
         //핸들러로 deadline Text 조정
