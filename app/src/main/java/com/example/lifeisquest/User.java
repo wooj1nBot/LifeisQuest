@@ -8,7 +8,8 @@ public class User implements Serializable {
     String name;
     String email;
     String uid;
-    String profile;
+    String profile = null;
+    String password;
     String token;
     ArrayList<String> quest;
     ArrayList<String> friend;
@@ -18,11 +19,11 @@ public class User implements Serializable {
 
     public User() {}
 
-    public User(String name, String email, String uid, String profile, String token){
+    public User(String name, String email, String uid, String token, String password){
         this.name = name;
         this.email = email;
         this.uid = uid;
-        this.profile = profile;
+        this.password = password;
         this.token = token;
     }
 

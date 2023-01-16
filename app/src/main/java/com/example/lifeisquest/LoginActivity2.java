@@ -13,7 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lifeisquest.databinding.ActivityLogin2Binding;
+//import com.example.lifeisquest.databinding.ActivityLogin2Binding;
+import com.example.lifeisquest.databinding.ActivityLoginBinding;
 import com.example.lifeisquest.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,13 +25,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginActivity2 extends AppCompatActivity {
-    private ActivityLogin2Binding binding;
+    private ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLogin2Binding.inflate(getLayoutInflater());
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // 가입하기 btn
