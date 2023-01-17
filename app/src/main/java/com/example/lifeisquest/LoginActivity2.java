@@ -67,6 +67,7 @@ public class LoginActivity2 extends AppCompatActivity {
                 }else {
                     // 로그인이 성공하는 조건 분기
                     mAuth = FirebaseAuth.getInstance();
+
                     mAuth.signInWithEmailAndPassword(email, pw)
                             .addOnCompleteListener(LoginActivity2.this, new OnCompleteListener<AuthResult>() {
                                 @Override

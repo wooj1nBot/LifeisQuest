@@ -15,8 +15,6 @@ public class User implements Serializable {
     ArrayList<String> friend;
 
 
-
-
     public User() {}
 
     public User(String name, String email, String uid, String token, String password){
