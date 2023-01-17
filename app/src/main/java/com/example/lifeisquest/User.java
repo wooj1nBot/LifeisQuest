@@ -53,4 +53,23 @@ public class User implements Serializable {
         return token;
     }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void setFriend(ArrayList<String> friend) {
+        this.friend = friend;
+    }
+
+    public void setQuest(ArrayList<String> quest) {
+        this.quest = quest;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
