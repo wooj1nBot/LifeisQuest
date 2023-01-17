@@ -48,6 +48,10 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.muramrr:LoadingView:1.2'
     implementation 'com.github.ibrahimsn98:CirclesLoadingView:1.0'
-    def lottieVersion = "5.2.0"
+    def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation 'com.kizitonwose.calendar:view:2.1.1'
+
+    // The compose calendar library
+    implementation 'com.kizitonwose.calendar:compose:2.1.1'
 }

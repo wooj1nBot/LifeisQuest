@@ -22,7 +22,17 @@ public class QuestManager {
     private int cnt = 0;
 
     public void quest_reigist(Quest q){
-       db.collection("Quest").document().set(q).addOnSuccessListener(new OnSuccessListener<Void>() {
+        final int[] a = {0};
+        db.collection("Quest").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<DocumentSnapshot> Documents=queryDocumentSnapshots.getDocuments();
+                 a[0] =Documents.size(); // 이거 왜 배열형 되는지는 모르겟음;;
+            }
+        });
+        String b="Quest Num " + String.valueOf(a[0]); // 총 문장 "Quest Num 숫자"
+       db.collection("Quest").document(b)
+               .set(q).addOnSuccessListener(new OnSuccessListener<Void>() {
            @Override
            public void onSuccess(Void unused) {
                Log.d("DATA_INSERT","quest 전송 되었음 ㅇㅇ");

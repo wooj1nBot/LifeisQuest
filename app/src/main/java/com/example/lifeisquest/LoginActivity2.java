@@ -67,12 +67,13 @@ public class LoginActivity2 extends AppCompatActivity {
                 }else {
                     // 로그인이 성공하는 조건 분기
                     mAuth = FirebaseAuth.getInstance();
+
                     mAuth.signInWithEmailAndPassword(email, pw)
                             .addOnCompleteListener(LoginActivity2.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class).putExtra("Text",mAuth.getUid())); // 유저 uid값을 받아야 되서 바꿧음
                                         finish();
                                     }else{
                                         Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
