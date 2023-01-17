@@ -95,7 +95,10 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     DocumentSnapshot documentSnapshot=task.getResult();
-                    Quest_list=(ArrayList<String>) documentSnapshot.get("Quest");
+                    User user = documentSnapshot.toObject(User.class);
+                    if (user != null) {
+                        Quest_list= user.getQuest();
+                    }
                 }
                 else{
                     // 튜토각???
