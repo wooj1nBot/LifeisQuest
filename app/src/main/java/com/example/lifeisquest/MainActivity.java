@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.CalendarView;
 
@@ -34,24 +36,25 @@ public class MainActivity extends AppCompatActivity {
     Boolean changed=false;
     ArrayList<Quest> quest_array=new ArrayList<>();
     FirebaseFirestore db=FirebaseFirestore.getInstance();
-    String uid;
+    String uid="3";
     ArrayList<String> Quest_list=new ArrayList<>();
+    User user;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         Intent intent=new Intent();
         //uid=intent.getStringExtra("Text");
         setting();
-
         bottomNavigationView = findViewById(R.id.navigationView);
         fragmentManager = getSupportFragmentManager();
         homeFragment = new HomeFragment();
         friendFragment = new FriendFragment();
         questFragment = new QuestFragment();
         myPageFragment = new MyPageFragment();
-        calendarView=findViewById(R.id.calendarView);
         initFragment();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -94,10 +97,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
-                    DocumentSnapshot documentSnapshot=task.getResult();
-                    User user = documentSnapshot.toObject(User.class);
-                    if (user != null) {
-                        Quest_list= user.getQuest();
+                    try {
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        user = documentSnapshot.toObject(User.class);
+                        if (user != null) {
+                            Quest_list = user.getQuest();
+                        } else {
+                            Quest_list = null;
+                        }
+                    }
+                    catch(Exception e){
+                        Log.d("Exception",e.getLocalizedMessage());
                     }
                 }
                 else{
@@ -122,5 +132,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
     }
 }
