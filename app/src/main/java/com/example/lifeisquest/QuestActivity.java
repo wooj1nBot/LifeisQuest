@@ -1,5 +1,6 @@
 package com.example.lifeisquest;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -14,9 +15,14 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -24,14 +30,20 @@ import java.util.Calendar;
 public class QuestActivity extends AppCompatActivity {
     private Quest quest;
     private RatingBar ratingDiff;
-    private TextView rewardText, informText, deadLineText;
+    private TextView rewardText, informText, deadLineText, questTitle;
     private ImageButton setDeadLineBtn, sendQuestBtn,  plusBtn;
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
     private String targetUid;
-    private String TAG = "KKKKDd";
+    private String TAG = "QuestActivity";
     private final int REQUEST_CODE = 1;
+    private Quest sendQuest = null;
+    private Calendar calendar;
+    private User myData;
+    FirebaseFirestore db;
 
+
+    @SuppressLint("MissingInflatedId")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +58,7 @@ public class QuestActivity extends AppCompatActivity {
         setDeadLineBtn = findViewById(R.id.setDeadlineBtn);
         sendQuestBtn = findViewById(R.id.sendQuestBtn);
         plusBtn = findViewById(R.id.plusBtn);
+        questTitle = findViewById(R.id.mainQuestTitle);
 
 
         plusBtn.setOnClickListener(v->{
@@ -104,6 +117,28 @@ public class QuestActivity extends AppCompatActivity {
             }, calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE), true);
             timePickerDialog.show();
             deadLineText.setText(getDate(objCalendar));
+            calendar = objCalendar;
+        });
+        sendQuestBtn.setOnClickListener(v->{
+            long tt = System.currentTimeMillis();
+            sendQuest = new Quest(myData.getUid(), targetUid, informText.getText().toString(), questTitle.getText().toString(),
+            ratingDiff.getNumStars(), tt,
+            calendar.getTimeInMillis(), rewardText.getText().toString());
+            db.collection("Quest").document(myData.getUid())
+                    .set(quest)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d(TAG, "DocumentSnapshot successfully written!");
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w(TAG, "Error writing document", e);
+                        }
+                    });
+
         });
 
 
