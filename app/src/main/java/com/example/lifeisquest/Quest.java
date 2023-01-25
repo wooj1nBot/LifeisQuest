@@ -1,7 +1,5 @@
 package com.example.lifeisquest;
 
-import java.util.ArrayList;
-
 public class Quest {
 
     private static final int QUEST_STATE_WAIT = 0;
@@ -23,7 +21,7 @@ public class Quest {
     private double[] QUEST_LOCATION;
     // 좌표 파일 형식 받아서 겟셋 하고 해야함 ㅇㅇ
     public Quest(){}
-    public Quest(String ID_GIVER, String ID_RECEIVER, String MESSAGE,String QUEST_TITLE,
+    public Quest(String ID_GIVER, String ID_RECEIVER, String MESSAGE, String QUEST_TITLE,
                  int QUEST_DIFFICULTY, long QUEST_SEND_TIME, long QUEST_DEADLINE, String QUEST_REWARD_TEXT){
         this.ID_GIVER=ID_GIVER;
         this.ID_RECEIVER = ID_RECEIVER;

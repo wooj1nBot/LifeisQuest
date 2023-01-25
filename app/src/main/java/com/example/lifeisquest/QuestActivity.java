@@ -1,32 +1,36 @@
 package com.example.lifeisquest;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.widget.Button;
+import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 
 public class QuestActivity extends AppCompatActivity {
     private Quest quest;
     private RatingBar ratingDiff;
     private TextView rewardText, informText, deadLineText;
-    private ImageButton setDeadLineBtn, sendQuestBtn;
+    private ImageButton setDeadLineBtn, sendQuestBtn,  plusBtn;
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
+    private String targetUid;
+    private String TAG = "KKKKDd";
+    private final int REQUEST_CODE = 1;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -41,6 +45,13 @@ public class QuestActivity extends AppCompatActivity {
         deadLineText = findViewById(R.id.deadLineText);
         setDeadLineBtn = findViewById(R.id.setDeadlineBtn);
         sendQuestBtn = findViewById(R.id.sendQuestBtn);
+        plusBtn = findViewById(R.id.plusBtn);
+
+
+        plusBtn.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), SelectFriend.class);
+            startActivityForResult(intent, REQUEST_CODE);
+        });
 
         //핸들러로 deadline Text 조정
         new Thread(new Runnable() {
@@ -98,7 +109,14 @@ public class QuestActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String result = (data.getStringExtra("result"));
+        targetUid = result;
+        Toast.makeText(QuestActivity.this,targetUid, Toast.LENGTH_SHORT);
+        Log.d(TAG,"act");
+    }
 
     static String getDate(Calendar c) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd(HH:mm)");

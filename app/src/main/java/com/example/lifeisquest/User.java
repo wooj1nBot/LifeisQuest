@@ -2,7 +2,6 @@ package com.example.lifeisquest;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class User implements Serializable {
     String name;
