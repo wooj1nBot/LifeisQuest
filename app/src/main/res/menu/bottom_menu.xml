@@ -16,7 +16,7 @@
         android:id="@+id/page_add_quest"
         android:icon="@drawable/add_circle_48px"
         android:enabled="true"
-        android:title="d" />
+        android:title="퀘스트 추가" />
     <item
         android:id="@+id/page_quest"
         android:icon="@drawable/fact_check_48px"

@@ -77,14 +77,6 @@ public class SelectFriend extends AppCompatActivity {
         /* 리스트뷰에 어댑터 등록 */
         return mMyAdapter;
     }
-    private FriendSelectAdapter dataSetting2(){// 임시로 만듦
-        FriendSelectAdapter mMyAdapter = new FriendSelectAdapter();
-        for(int i = 0; i<5;++i){
-            User user = new User("name", "email", "uid", "token", "pw");
-            friendlist.add(user);
-        }
-        mMyAdapter.addItem(friendlist);
-        return mMyAdapter;
-    }
+
 
 }
